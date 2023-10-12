@@ -1,6 +1,6 @@
 namespace Application.Dtos;
 
-public class WeatherForecastDto
+public sealed record WeatherForecastDto
 {
 	public DateTime Date { get; set; }
 	public int TemperatureC { get; set; }
