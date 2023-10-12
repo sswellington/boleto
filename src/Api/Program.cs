@@ -1,3 +1,4 @@
+using Api.Extensions;
 using Serilog;
 
 namespace Api;
@@ -9,6 +10,8 @@ public static class Program
 		var builder = WebApplication.CreateBuilder(args);
 
 		builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
+
+		DependencyInjectionConfig.Init(builder.Services);
 
 		builder.Services.AddControllers();
 		builder.Services.AddEndpointsApiExplorer();

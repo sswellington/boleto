@@ -7,8 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositories\BaseRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ObjectRelationalMapping\" />
-    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Repositories\BaseRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
   </ItemGroup>
 
 </Project>
