@@ -16,4 +16,18 @@ public sealed class BancoRepository : BaseRepository<BancoEntity>, IBancoReposit
 		var result = await _context.Banco.SingleOrDefaultAsync(q => q.Codigo == code).ConfigureAwait(false);
 		return result ?? new BancoEntity();
 	}
+
+	public async Task<bool> Register(BancoEntity entity)
+	{
+		if(entity == null)
+			return await Task.FromResult(false);
+
+		if (GetByCodeOfBank(entity.Codigo) == null)
+			return await Task.FromResult(false);
+
+		await _context.Banco.AddAsync(entity).ConfigureAwait(false);
+		_context.SaveChanges();
+
+		return await Task.FromResult(true);	
+	}
 }

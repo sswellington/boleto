@@ -13,6 +13,14 @@ public sealed class BancoService : IBancoService
 		_bancoRepository = bancoRepository;
 	}
 
+	public async Task<bool> Register(BancoDto dto)
+	{
+		//TODO: Validar os dado que são obrigatórias estão preenchidas.
+
+		BancoEntity entity = BancoDto.Dto2Entity(dto);
+		return await _bancoRepository.Register(entity);
+	}
+
 	public async Task<BancoDto> GetByCodeOfBank(string code)
 	{
 		BancoEntity model = await _bancoRepository.GetByCodeOfBank(code);

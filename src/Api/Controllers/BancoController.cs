@@ -1,6 +1,8 @@
 using Application.Dtos;
+using Application.Entities;
 using Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 
 namespace Api.Controllers;
 
@@ -27,5 +29,21 @@ public class BancoController : ControllerBase
 	{
 		var model = await _bancoService.GetAll();
 		return model;
+	}
+
+	[HttpPost]
+	[ProducesResponseType(StatusCodes.Status201Created, Type = typeof(BancoDto))]
+	[ProducesResponseType(StatusCodes.Status400BadRequest)]
+	public async Task<IActionResult> Post([FromBody] BancoDto bancoDto)
+	{
+		try
+		{
+			await _bancoService.Register(bancoDto);
+			return CreatedAtAction(nameof(Get), new { codigoBanco = bancoDto.Codigo }, bancoDto);
+		}
+		catch (ArgumentException ex)
+		{
+			return BadRequest("Ocorreu um erro ao cadastrar o banco: " + ex.Message);
+		}
 	}
 }
