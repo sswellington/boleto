@@ -34,7 +34,7 @@ public partial class BoletoContext : DbContext
 
 		modelBuilder.Entity<BoletoEntity>(entity =>
 		{
-			entity.ToTable("BOLETO");
+			entity.ToTable("boleto");
 
 			entity.Property(e => e.Id).HasColumnName("id");
 
