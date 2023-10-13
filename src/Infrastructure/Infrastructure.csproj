@@ -11,11 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ObjectRelationalMapping\" />
+    <None Include="Repositories\BaseRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Repositories\BaseRepository.cs" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
   </ItemGroup>
 
   <ItemGroup>

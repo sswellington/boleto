@@ -1,4 +1,5 @@
 using Application.Dtos;
+using Application.Entities;
 using Application.Interfaces.Repositories;
 using Application.Interfaces.Services;
 
@@ -14,13 +15,13 @@ public sealed class BancoService : IBancoService
 
 	public async Task<BancoDto> GetById(string id)
 	{
-		var model = await _bancoRepository.GetById(id);
+		BancoEntity model = await _bancoRepository.GetById(id);
 		return new BancoDto
 		(
 			Id: model.Id,
 			Nome: model.Nome,
 			Codigo: model.Codigo,
-			PercentrualJuros: model.PercentrualJuros
+			PercentualJuros: model.PercentualJuros
 		);
 	}
 }
