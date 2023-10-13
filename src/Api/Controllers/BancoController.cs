@@ -18,7 +18,7 @@ public class BancoController : ControllerBase
 	[HttpGet("{codigoBanco}")]
 	[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BancoDto))]
 	[ProducesResponseType(StatusCodes.Status404NotFound)]
-	public async Task<BancoDto> Get(string codigoBanco) => await _bancoService.GetById(codigoBanco);
+	public async Task<BancoDto> Get(string codigoBanco) => await _bancoService.GetByCodeOfBank(codigoBanco);
 
 	[HttpGet]
 	[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BancoDto))]

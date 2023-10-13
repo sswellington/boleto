@@ -13,7 +13,7 @@ public sealed class BoletoService : IBoletoService
 		_boletoRepository = boletoRepository;
 	}
 
-	public async Task<BoletoDto> GetById(string id)
+	public async Task<BoletoDto> GetById(int id)
 	{
 		BoletoEntity model = await _boletoRepository.GetById(id);
 		return BoletoDto.Entity2Dto(model);

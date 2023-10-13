@@ -31,7 +31,7 @@ public abstract class BaseRepository<T> where T : class
 		return await _context.Set<T>().ToListAsync().ConfigureAwait(false);
 	}
 
-	public virtual async Task<T?> GetById(string id)
+	public virtual async Task<T?> GetById(int id)
 	{
 		return await _context.Set<T>().FindAsync(id).ConfigureAwait(false);
 	}

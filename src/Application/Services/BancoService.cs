@@ -13,7 +13,13 @@ public sealed class BancoService : IBancoService
 		_bancoRepository = bancoRepository;
 	}
 
-	public async Task<BancoDto> GetById(string id)
+	public async Task<BancoDto> GetByCodeOfBank(string code)
+	{
+		BancoEntity model = await _bancoRepository.GetByCodeOfBank(code);
+		return BancoDto.Entity2Dto(model);
+	}
+
+	public async Task<BancoDto> GetById(int id)
 	{
 		BancoEntity model = await _bancoRepository.GetById(id);
 		return BancoDto.Entity2Dto(model);

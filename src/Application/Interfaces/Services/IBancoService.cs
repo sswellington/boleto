@@ -3,6 +3,7 @@ using Application.Dtos;
 namespace Application.Interfaces.Services;
 public interface IBancoService
 {
-	Task<BancoDto> GetById(string id);
+	Task<BancoDto> GetByCodeOfBank(string code);
+	Task<BancoDto> GetById(int id);
 	Task<ICollection<BancoDto>> GetAll();
 }

@@ -18,5 +18,5 @@ public class BoletoController : ControllerBase
 	[HttpGet("{codigoBoleto}")]
 	[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BoletoDto))]
 	[ProducesResponseType(StatusCodes.Status404NotFound)]
-	public async Task<BoletoDto> Get(string codigoBoleto) => await _boletoService.GetById(codigoBoleto);
+	public async Task<BoletoDto> Get(int codigoBoleto) => await _boletoService.GetById(codigoBoleto);
 }
