@@ -13,7 +13,7 @@ public sealed class BoletoService : IBoletoService
 		_boletoRepository = boletoRepository;
 	}
 
-	private static BoletoEntity IsExpired(BoletoEntity boleto)
+	private static BoletoEntity HasExpired(BoletoEntity boleto)
 	{
 		DateTime currentTime = DateTime.UtcNow;
 
@@ -27,7 +27,7 @@ public sealed class BoletoService : IBoletoService
 	public async Task<BoletoDto> GetById(int id)
 	{
 		BoletoEntity entity = await _boletoRepository.GetById(id);
-		entity = IsExpired(entity);
+		entity = HasExpired(entity);
 		return BoletoDto.Entity2Dto(entity);
 	}
 };
