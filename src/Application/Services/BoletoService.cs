@@ -13,9 +13,21 @@ public sealed class BoletoService : IBoletoService
 		_boletoRepository = boletoRepository;
 	}
 
+	private static BoletoEntity IsExpired(BoletoEntity boleto)
+	{
+		DateTime currentTime = DateTime.UtcNow;
+
+		if (boleto.DataVencimento < DateOnly.FromDateTime(currentTime))
+			return boleto;
+
+		boleto.ValorBrl += (boleto.ValorBrl * boleto.Banco!.PercentualJuros);
+		return boleto;
+	}
+
 	public async Task<BoletoDto> GetById(int id)
 	{
-		BoletoEntity model = await _boletoRepository.GetById(id);
-		return BoletoDto.Entity2Dto(model);
+		BoletoEntity entity = await _boletoRepository.GetById(id);
+		entity = IsExpired(entity);
+		return BoletoDto.Entity2Dto(entity);
 	}
 };
