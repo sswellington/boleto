@@ -16,12 +16,17 @@ public sealed class BancoService : IBancoService
 	public async Task<BancoDto> GetById(string id)
 	{
 		BancoEntity model = await _bancoRepository.GetById(id);
-		return new BancoDto
-		(
-			Id: model.Id,
-			Nome: model.Nome,
-			Codigo: model.Codigo,
-			PercentualJuros: model.PercentualJuros
-		);
+		return BancoDto.Entity2Dto(model);
+	}
+
+	public async Task<ICollection<BancoDto>> GetAll()
+	{
+		var entities = await _bancoRepository.GetAll();
+		List<BancoDto> dtos = new List<BancoDto>();
+
+		foreach (var item in entities)
+			dtos.Add(BancoDto.Entity2Dto(item));
+
+		return dtos;
 	}
 }

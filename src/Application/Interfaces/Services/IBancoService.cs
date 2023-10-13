@@ -4,4 +4,5 @@ namespace Application.Interfaces.Services;
 public interface IBancoService
 {
 	Task<BancoDto> GetById(string id);
+	Task<ICollection<BancoDto>> GetAll();
 }
