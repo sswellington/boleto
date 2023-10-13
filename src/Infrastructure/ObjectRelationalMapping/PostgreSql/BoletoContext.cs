@@ -67,11 +67,11 @@ public partial class BoletoContext : DbContext
 				.HasColumnType("TEXT");
 
 			entity.Property(e => e.BancoId)
-				.HasColumnName("bancoId");
+				.HasColumnName("bancoid");
 
-			entity.HasOne(d => d.Banco)
-				.WithMany(p => p.Boleto)
-				.HasForeignKey(d => d.BancoId);
+			entity.HasOne(e => e.Banco)
+				.WithMany(e => e.Boleto)
+				.HasForeignKey(e => e.BancoId);
 		});
 
 		OnModelCreatingPartial(modelBuilder);
