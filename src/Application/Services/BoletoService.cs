@@ -17,7 +17,7 @@ public sealed class BoletoService : IBoletoService
 	{
 		DateTime currentTime = DateTime.UtcNow;
 
-		if (boleto.DataVencimento < DateOnly.FromDateTime(currentTime))
+		if (boleto.DataVencimento > DateOnly.FromDateTime(currentTime))
 			return boleto;
 
 		boleto.ValorBrl += (boleto.ValorBrl * boleto.Banco!.PercentualJuros);
