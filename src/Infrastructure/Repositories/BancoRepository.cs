@@ -1,14 +1,10 @@
 using Application.Entities;
 using Application.Interfaces.Repositories;
+using Infrastructure.ObjectRelationalMapping.PostgreSql;
 
 namespace Infrastructure.Repositories;
-public sealed class BancoRepository : IBancoRepository
+
+public sealed class BancoRepository : BaseRepository<BancoEntity>, IBancoRepository
 {
-	public async Task<BancoEntity> GetById(string id) => new BancoEntity
-	{
-		Id = 1,
-		Nome = "Banco do Brasil S.A.",
-		Codigo = "001",
-		PercentualJuros = 0.1,
-	};
+	public BancoRepository(BoletoContext boletoContext) : base(boletoContext) { }
 }

@@ -25,8 +25,7 @@ public class BancoController : ControllerBase
 	[ProducesResponseType(StatusCodes.Status404NotFound)]
 	public async Task<IEnumerable<BancoDto>> Get()
 	{
-		var model = await _bancoService.GetById("000");
-		var models = new List<BancoDto>(){ model, model };
-		return models;
+		var model = await _bancoService.GetAll();
+		return model;
 	}
 }

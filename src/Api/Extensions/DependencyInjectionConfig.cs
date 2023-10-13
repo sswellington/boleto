@@ -15,13 +15,13 @@ public static class DependencyInjectionConfig
 
 	private static void Repositories(IServiceCollection services)
 	{
-		services.AddSingleton<IBancoRepository, BancoRepository>();
-		services.AddSingleton<IBoletoRepository, BoletoRepository>();
+		services.AddScoped<IBancoRepository, BancoRepository>();
+		services.AddScoped<IBoletoRepository, BoletoRepository>();
 	}
 
 	private static void Services(IServiceCollection services)
 	{
-		services.AddSingleton<IBancoService, BancoService>();
-		services.AddSingleton<IBoletoService, BoletoService>();
+		services.AddScoped<IBancoService, BancoService>();
+		services.AddScoped<IBoletoService, BoletoService>();
 	}
 }
